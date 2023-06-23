@@ -1,0 +1,222 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+CREATE DATABASE CMS;
+USE CMS;
+
+CREATE TABLE Job (
+  JobId INT IDENTITY(1,1) PRIMARY KEY,
+  JobRole VARCHAR(50)
+);
+
+CREATE TABLE Users (
+  UserID INT PRIMARY KEY IDENTITY(1,1),
+  Username VARCHAR(50) NOT NULL,
+  Password VARCHAR(50) NOT NULL,
+  Email VARCHAR(50) NOT NULL,
+  Phonenumber VARCHAR(10) NOT NULL,
+  JobID INT NOT NULL,
+  FOREIGN KEY (JobID) REFERENCES Job(JobId)
+);
+
+CREATE TABLE Categories (
+  CategoryID INT PRIMARY KEY IDENTITY(1,1),
+  CategoryName VARCHAR(50) NOT NULL,
+  IsApplicable BIT NOT NULL
+);
+
+CREATE TABLE Contents (
+  ContentID INT PRIMARY KEY IDENTITY(1,1),
+  Title VARCHAR(100) NOT NULL,
+  Description VARCHAR(255) NOT NULL,
+  FileType VARCHAR(255),
+  FileURL VARCHAR(255),
+  RetentionPeriod DATETIME NOT NULL,
+  CategoryID INT NOT NULL,
+  UserID INT NOT NULL,
+  FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+CREATE TABLE FormResponses (
+  ID INT PRIMARY KEY IDENTITY,
+  Name VARCHAR(50) NOT NULL,
+  Email VARCHAR(50) NOT NULL,
+  Message VARCHAR(255) NOT NULL,
+);
+
+
+INSERT INTO FormResponses (Name,Email,Message) VALUES ('aaa','aaa@gmail.com','how to upload');
+
+select *  from FormResponses;
+
+
+
+INSERT INTO Job (JobRole) VALUES ('Manager');
+INSERT INTO Job (JobRole) VALUES ('HR');
+INSERT INTO Job (JobRole) VALUES ('Admin');
+INSERT INTO Job (JobRole) VALUES ('Developer');
+INSERT INTO Job (JobRole) VALUES ('Salesperson');
+INSERT INTO Job (JobRole) VALUES ('Marketing Specialist');
+INSERT INTO Job (JobRole) VALUES ('Accountant');
+INSERT INTO Job (JobRole) VALUES ('Customer Service Representative');
+INSERT INTO Job (JobRole) VALUES ('Operations Manager');
+INSERT INTO Job (JobRole) VALUES ('Quality Assurance Analyst');
+
+
+select * from Job;
+
+
+INSERT INTO Categories (CategoryName, IsApplicable) VALUES ('Development Department', 1);
+INSERT INTO Categories (CategoryName, IsApplicable) VALUES ('Infrastructure Department', 1);
+INSERT INTO Categories (CategoryName, IsApplicable) VALUES ('Support Department', 0);
+INSERT INTO Categories (CategoryName, IsApplicable) VALUES ('Project Management Office (PMO)', 1);
+INSERT INTO Categories (CategoryName, IsApplicable) VALUES ('Quality Assurance (QA) Department', 1);
+INSERT INTO Categories (CategoryName, IsApplicable) VALUES ('Security Department', 1);
+INSERT INTO Categories (CategoryName, IsApplicable) VALUES ('Sales and Marketing Department', 0);
+INSERT INTO Categories (CategoryName, IsApplicable) VALUES ('Research and Development (R&D) Department', 1);
+INSERT INTO Categories (CategoryName, IsApplicable) VALUES ('Training and Education Department', 1);
+INSERT INTO Categories (CategoryName, IsApplicable) VALUES ('Human Resources (HR) Department', 1);
+
+
+select * from Categories
+
+INSERT INTO Users (Username, Password, Email, Phonenumber, JobID)
+VALUES ('jitendra', 'jitendra@1', 'jitendra@example.com', '9964586007', 3);
+
+INSERT INTO Users (Username, Password, Email, Phonenumber, JobID)
+VALUES ('sumant', 'sumant@1', 'sumant@example.com', '9964586006', 3);
+
+INSERT INTO Users (Username, Password, Email, Phonenumber, JobID)
+VALUES ('pallavi', 'pallavi@1', 'pallavi@example.com', '9964586005', 3);
+
+INSERT INTO Users (Username, Password, Email, Phonenumber, JobID)
+VALUES ('user4', 'password4', 'user4@example.com', '9964586004', 1);
+
+INSERT INTO Users (Username, Password, Email, Phonenumber, JobID)
+VALUES ('user5', 'password5', 'user5@example.com', '9964586003', 2);
+
+INSERT INTO Users (Username, Password, Email, Phonenumber, JobID)
+VALUES ('user6', 'password6', 'user6@example.com', '6789012345', 5);
+
+INSERT INTO Users (Username, Password, Email, Phonenumber, JobID)
+VALUES ('user7', 'password7', 'user7@example.com', '7890123456', 7);
+
+INSERT INTO Users (Username, Password, Email, Phonenumber, JobID)
+VALUES ('user8', 'password8', 'user8@example.com', '8901234567', 4);
+
+INSERT INTO Users (Username, Password, Email, Phonenumber, JobID)
+VALUES ('user9', 'password9', 'user9@example.com', '9012345678', 6);
+
+INSERT INTO Users (Username, Password, Email, Phonenumber, JobID)
+VALUES ('user10', 'password10', 'user10@example.com', '9012345673', 8);
+
+select * from Users
+
+INSERT INTO Contents (Title, Description, FileType, FileURL, RetentionPeriod, CategoryID, UserID)
+VALUES ('Introduction to Web Development', 'An overview of web development technologies and concepts', 'PDF', 'https://planetstudy.in/assets/uploads/free-resources/web%20development%20.pdf', '2023-06-30', 4, 1)
+
+select * from Contents where UserID =1;
+
+
+
+ALTER TABLE Contents
+ALTER COLUMN RetentionPeriod DATE NOT NULL;
+
+
+INSERT INTO Contents (Title, Description, FileType, FileURL, RetentionPeriod, CategoryID, UserID) VALUES
+('Introduction to Web Development', 'An overview of web development technologies and concepts', 'PDF', 'https://planetstudy.in/assets/uploads/free-resources/web%20development%20.pdf', '2023-06-30', 4, 1),
+('Database Fundamentals', 'A beginner''s guide to databases', 'PDF', 'https://example.com/database_fundamentals.pdf', '2023-07-15', 2, 3),
+('Data Structures and Algorithms', 'Exploring common data structures and algorithms', 'PDF', 'https://example.com/data_structures_algorithms.pdf', '2023-06-30', 2, 2),
+('Introduction to Machine Learning', 'An introduction to the basics of machine learning', 'Video', 'https://example.com/intro_to_machine_learning.mp4', '2023-07-30', 5, 1),
+('Mobile App Development Crash Course', 'Learn to build mobile apps using popular frameworks', 'Video', 'https://example.com/mobile_app_dev_crash_course.mp4', '2023-06-15', 6, 4),
+('Networking Fundamentals', 'Understanding computer networking principles', 'PDF', 'https://example.com/networking_fundamentals.pdf', '2023-08-10', 3, 5),
+-- Add more dummy data here
+('Sample Content', 'This is a sample content', 'Video', 'https://example.com/sample_content.mp4', '2023-08-10', 8, 9),
+('Artificial Intelligence Basics', 'An introduction to artificial intelligence concepts', 'PDF', 'https://example.com/ai_basics.pdf', '2023-06-30', 5, 7),
+('Python Programming for Beginners', 'Learn the basics of Python programming language', 'Video', 'https://example.com/python_programming_beginners.mp4', '2023-07-15', 4, 2),
+('Web Design Principles', 'Key principles for designing effective websites', 'PDF', 'https://example.com/web_design_principles.pdf', '2023-06-30', 1, 6),
+('Introduction to Data Science', 'An overview of data science and its applications', 'Video', 'https://example.com/intro_to_data_science.mp4', '2023-07-30', 3, 9),
+('Android App Development', 'Building Android apps using Java and Android Studio', 'Video', 'https://example.com/android_app_development.mp4', '2023-06-15', 6, 3),
+('Introduction to Cloud Computing', 'Understanding cloud computing concepts and services', 'PDF', 'https://example.com/intro_to_cloud_computing.pdf', '2023-08-10', 2, 8),
+('JavaScript Fundamentals', 'Fundamental concepts of the JavaScript programming language', 'PDF', 'https://example.com/js_fundamentals.pdf', '2023-06-30', 4, 5),
+('Digital Marketing Strategies', 'Effective strategies for digital marketing campaigns', 'Video', 'https://example.com/digital_marketing_strategies.mp4', '2023-07-15', 1, 7);
+
+INSERT INTO Contents (Title, Description, FileType, FileURL, RetentionPeriod, CategoryID, UserID) VALUES
+('Expired Content 1', 'This content has an expired retention period', 'Video', 'https://example.com/expired_content1.mp4', '2022-12-31', 1, 2),
+('Expired Content 2', 'This content has an expired retention period', 'Document', 'https://example.com/expired_content2.docx', '2022-10-15', 3, 4),
+('Expired Content 3', 'This content has an expired retention period', 'Image', 'https://example.com/expired_content3.jpg', '2022-09-30', 2, 1),
+('Expired Content 1', 'This content has an expired retention period', 'Video', 'https://example.com/expired_content1.mp4', '2022-12-31', 1, 2),
+('Expired Content 2', 'This content has an expired retention period', 'Document', 'https://example.com/expired_content2.docx', '2022-10-15', 4, 4),
+('Expired Content 3', 'This content has an expired retention period', 'Image', 'https://example.com/expired_content3.jpg', '2022-09-30', 4, 1);
+
+CREATE PROCEDURE GetContentByCategory
+    @CategoryID INT
+AS
+BEGIN
+    SELECT *
+    FROM Contents
+    WHERE CategoryID = @CategoryID;
+END;
+
+CREATE PROCEDURE GetContentByCategoryIDN
+  @CategoryID INT
+AS
+BEGIN
+  SELECT c.ContentID, c.Title, c.Description, c.FileType, c.FileURL, c.RetentionPeriod, u.Username
+  FROM Contents c
+  INNER JOIN Categories ct ON c.CategoryID = ct.CategoryID
+  INNER JOIN Users u ON c.UserID = u.UserID
+  WHERE ct.CategoryID = @CategoryID;
+END 
+
+
+CREATE VIEW ContentAggregationByUser AS
+SELECT
+  UserID,
+  COUNT(*) AS TotalContents,
+  SUM(CASE WHEN FileType = 'PDF' THEN 1 ELSE 0 END) AS PDFCount,
+  SUM(CASE WHEN FileType = 'Video' THEN 1 ELSE 0 END) AS VideoCount
+FROM Contents
+GROUP BY UserID;
+select * from ContentAggregationByUser
+
+
+CREATE VIEW ContentAggregationByFileType AS
+SELECT
+  FileType,
+  COUNT(*) AS TotalContents
+FROM Contents
+GROUP BY FileType;
+select * from ContentAggregationByFileType
+
+
+
+CREATE PROCEDURE AggregateContentsByUser
+AS
+BEGIN
+    SELECT Users.Username, COUNT(*) AS ContentCount
+    FROM Users
+    INNER JOIN Contents ON Users.UserID = Contents.UserID
+    GROUP BY Users.Username;
+END;
+
+
+
+
+CREATE PROCEDURE AggregateContentsByCategory
+AS
+BEGIN
+    SELECT Categories.CategoryName, COUNT(*) AS ContentCount
+    FROM Categories
+    INNER JOIN Contents ON Categories.CategoryID = Contents.CategoryID
+    GROUP BY Categories.CategoryName;
+END;
+
+
+
+
+EXECUTE AggregateContentsByCategory;
+
+
+
+
+
