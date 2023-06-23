@@ -1,0 +1,53 @@
+<div class="container-fluid g-0">
+  <app-header (sideNavToggled)="sideNavStatus=$event;"></app-header>
+  <main>
+    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav> 
+    <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+      <i class="fa-sharp fa-solid fa-arrow-left fa-2xl" (click)="back()"></i>
+      <div class="container">
+        <h2>Documents of {{categorydetails.categoryName}}</h2>
+        <div class="form-group d-flex align-items-center">
+          <div class="hide-expired me-3">
+            <input type="checkbox" id="hideExpiredCheckbox" [(ngModel)]="hideExpired">
+            <label for="hideExpiredCheckbox">Hide Expired Content</label>
+          </div>
+          <button class="btn btn-primary me-3" (click)="getContentByCategory()">Get Content</button>
+          <div class="dropdown sorting-dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="sortingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              Sort By
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="sortingDropdown">
+              <li><button class="dropdown-item" (click)="sortContents('retentionPeriodAsc')">Retention Period (Asc)</button></li>
+              <li><button class="dropdown-item" (click)="sortContents('retentionPeriodDesc')">Retention Period (Desc)</button></li>
+              <li><button class="dropdown-item" (click)="sortContents('fileTypeAsc')">File Type (Asc)</button></li>
+              <li><button class="dropdown-item" (click)="sortContents('fileTypeDesc')">File Type (Desc)</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <div *ngIf="contents.length > 0">
+          <table class="table mt-4">
+            <tbody>
+              <tr *ngFor="let content of contents">
+                <td>
+                  <div style="border: 2px solid black; padding: 10px; box-shadow: 3px 3px 3px 3px grey; border-radius: 4px;">
+                    <h4>{{ content.title }}</h4>
+                    <p>About content: {{ content.description }}</p>
+                    <p>File Type: {{ content.fileType }}</p>
+                    <p>
+                      File URL:
+                      <a href="{{ content.fileURL }}" class="btn btn-primary" target="_blank">Show File</a>
+                    </p>
+                    <p>Retention Period: {{ content.retentionPeriod }}</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+

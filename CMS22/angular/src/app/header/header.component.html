@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-2">
+  <div class="side-nav-button p-2 me-3 text-light" (click)="SideNavToggle()">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <a class="navbar-brand px-4" href="#">Content Management</a>
+
+  <div class="navbar-collapse"></div>
+
+  <button class="btn btn-outline-light mx-2" (click)="logout()">Logout</button>
+
+  <ng-container *ngIf="user">
+    <div class="profile-logo dropstart">
+      <button class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">
+        {{ user[0]?.username }}
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li><a routerLink="/profile" class="dropdown-item">Your Profile</a></li>
+        <li><a href="#" class="dropdown-item">Logout</a></li>
+      </ul>
+    </div>
+  </ng-container>
+</nav>
+

@@ -1,0 +1,45 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          class="img-fluid" alt="Phone image">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1" style="padding-bottom: 90px;">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body p-5">
+            <h2 class="text-uppercase text-center mb-5">Login</h2>
+        <form autocomplete="off" #myForm="ngForm" (ngSubmit)="myForm.form.valid && submit(myForm)">
+
+          <div class="form-outline mb-4">
+            <label for="username" class="float-left">Username</label>
+            <div *ngIf="username.invalid && (username.touched || username.dirty)" class="float-right">
+              <p class="text-danger">Username is required</p>
+            </div>
+            <input type="text" name="username" class="form-control" placeholder="Enter Username"
+              #username="ngModel" [(ngModel)]="userService.userData.Username" required>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label for="password" class="float-left">Password</label>
+            <div *ngIf="password.invalid && (password.touched || password.dirty)" class="float-right">
+              <p class="text-danger">Password is required</p>
+            </div>
+            <input type="password" name="password" class="form-control" placeholder="Enter Password"
+              #password="ngModel" [(ngModel)]="userService.userData.Password" required>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <button type="submit" [disabled]="myForm.invalid"
+              class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
+          </div>
+          <br>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-danger btn-block btn-lg gradient-custom-4 text-body" (click)="back()">Cancel</button>
+          </div>
+          <p class="text-center text-muted mt-5 mb-0">Don't have an account?
+            <a routerLink="/signup" class="fw-bold text-body"><u>Register here</u></a>
+          </p>
+        
+      
+        </form>

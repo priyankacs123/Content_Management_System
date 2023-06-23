@@ -1,0 +1,67 @@
+
+      
+
+<div class="container">
+  <h2>Content by Category</h2><br>
+  <div class="d-flex align-items-center mb-6">
+    <div class="input-group rounded me-3" style="max-width: 300px;">
+      <input type="search" class="form-control rounded" placeholder="Search" [(ngModel)]="searchText" (input)="searchContent()" (keydown)="handleKeyDown($event)" aria-label="Search" aria-describedby="search-addon" />
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search"></i>
+      </span>
+    </div> 
+  
+  <div class="form-group flex-grow-1 me-3 dropdown sorting-dropdown">
+    
+    <select class="form-control" id="categoryID" [(ngModel)]="categoryID">
+        <option value="0">Please select a Department</option>
+      <option value="1">Development Department</option>
+      <option value="2">Infrastructure Department</option>
+      <option value="3">Support Department</option>
+      <option value="4">Project Management Office (PMO)</option>
+      <option value="5">Quality Assurance (QA) Department</option>
+      <option value="6">Security Department</option>
+      <option value="7">Sales and Marketing Department</option>
+      <option value="8">Research and Development (R&D) Department</option>
+      <option value="9">Training and Education Department</option>
+      <option value="10">Human Resources (HR) Department</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" (click)="getContentByCategory()">Get Content</button>
+  </div>
+
+  <div class="hide-expired">
+    <input type="checkbox" id="hideExpiredCheckbox" [(ngModel)]="hideExpired">&nbsp;
+    <label for="hideExpiredCheckbox">Hide Expired Content</label>
+  </div>
+</div>
+
+
+<div class="container content-container">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let content of contents">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4>{{ content.title }}</h4>
+        <div class="content-actions">
+          <button class="btn btn-danger view-expired-btn" (click)="deleteContent(content.contentID)">
+            Delete
+          </button>
+          <button class="btn btn-primary  get-contents-btn" (click)="populateContent(content)">
+            Edit
+          </button>
+        </div>
+      </div>
+      <p>about content: {{ content.description }}</p>
+      <p>File Type: {{ content.fileType }}</p>
+      <p>File URL: 
+        <a href="{{ content.fileURL }}" class="btn btn-primary" target="_blank">Show File</a>
+      </p>
+      <p>Retention Period: {{ content.retentionPeriod }}</p>
+      <p>categoryID: {{ content.categoryID }}</p>
+    </li>
+  </ul>
+</div>
+
+  
+

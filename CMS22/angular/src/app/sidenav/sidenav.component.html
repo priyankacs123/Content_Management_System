@@ -1,0 +1,41 @@
+<div class="side-nav-content">
+  <ul class="nav-list" [ngClass]="{'nav-list-open':sideNavStatus}">
+      <li class="nav-list-item" (click)="home()">
+        <i class="fa-solid fa-home"></i>
+        <span>
+          <a href="">home</a>
+        </span>
+      </li>
+      <li class="nav-list-item">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>
+          <a routerLink="/dashboard">Dashboard</a>
+        </span>
+      </li>
+      <li class="nav-list-item">
+        <i class="fa-solid fa-box"></i>
+        <span>
+          <a routerLink="/categories">Categories</a>
+        </span>
+      </li>
+      <li class="nav-list-item" (click)="list()">
+        <i class="fa-solid fa-list"></i>
+        <span>
+          <a routerLink="/list">Users List</a>
+        </span>
+      </li>
+      <!--<li class="nav-list-item">
+        <i class="fa-solid fa-file"></i>
+        <span>
+          <a href="">User Files</a>
+        </span>
+      </li>-->
+      <li class="nav-list-item">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>
+          <a routerLink="/formresponses">Queries</a>
+        </span>
+      </li>
+  </ul>
+  
+</div>

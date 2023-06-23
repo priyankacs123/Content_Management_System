@@ -1,0 +1,83 @@
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .hide-expired {
+    margin-bottom: 10px;
+  }
+
+  .dropdown {
+    margin-bottom: 20px;
+  }
+
+  .list-group-item {
+    margin-bottom: 10px;
+  }
+
+
+
+
+  .black-border{
+    border: 1px solid black;
+}
+app-header{
+    position:fixed;
+    width:100%;
+    top:0px;
+    height:4rem;
+    z-index:2;
+}
+main{
+    position:absolute;
+    width:100%;
+    top:4rem;
+    z-index:1;
+}
+app-sidenav{
+    position:fixed;
+    left:0rem;
+    width:60px;
+    height:calc(100vh - 4rem);
+    box-shadow:0px 0px 10px rgba(0,0, 0, 0.5);
+    background-color: rgba(34, 34, 34, 1);
+    border-top:1px solid white;
+    overflow-x: hidden;
+    white-space: nowrap;
+    transition: width 250ms ease-in;
+}
+
+.app-side-nav-open{
+ width: 250px;
+}
+
+.display-area{
+  position:absolute;
+  left: 50px;
+  width:calc(100% - 50px);
+  transition: left 250ms ease-in,width 250ms ease-in;
+}
+
+.display-area-shrink{
+    width:calc(100% - 250px);
+    left:250px;
+}
+
+.view-expired-btn {
+  margin-bottom: 0px;
+  margin-right: 10px; /* Adjust the margin value as needed */
+}
+
+.get-contents-btn {
+  margin-left: 10px; /* Adjust the margin value as needed */
+}
+
+.content-container {
+  max-width: 850px; /* Adjust the max-width value as needed */
+}
+
+

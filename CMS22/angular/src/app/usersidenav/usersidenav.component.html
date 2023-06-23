@@ -1,0 +1,47 @@
+<div class="side-nav-content">
+    <ul class="nav-list" [ngClass]="{'nav-list-open':sideNavStatus}">
+        <li class="nav-list-item">
+          <i class="fa-solid fa-home"></i>
+          <span>
+            <a routerLink="/usercrud">home</a>
+          </span>
+        </li>
+        <!-- <li class="nav-list-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>
+            <a routerLink="/dashboard">Dashboard</a>
+          </span>
+        </li>
+        <li class="nav-list-item">
+          <i class="fa-solid fa-box"></i>
+          <span>
+            <a routerLink="/categories">Categories</a>
+          </span>
+        </li> -
+        <li class="nav-list-item" (click)="list()">
+          <i class="fa-solid fa-list"></i>
+          <span>
+            <a href="">Users List</a>
+          </span>
+        </li> -->
+        <li class="nav-list-item">
+          <i class="fa-solid fa-file"></i>
+          <span>
+            <a routerLink="/mycontent">VIew My Files</a>
+          </span>
+        </li>
+        <li class="nav-list-item">
+          <i class="fa-solid fa-plus"></i>
+          <span>
+            <a routerLink="/addfiles">Add Files</a>
+          </span>
+        </li>
+        <li class="nav-list-item">
+          <i class="fas fa-trash"></i>
+          <span>
+            <a routerLink="/recycle">Recycle Bin</a>
+          </span>
+        </li>
+    </ul>
+    
+  </div>

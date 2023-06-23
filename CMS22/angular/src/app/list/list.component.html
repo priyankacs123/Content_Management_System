@@ -1,0 +1,45 @@
+<div class="container-fluid g-0">
+  <app-header (sideNavToggled)="sideNavStatus=$event;"></app-header>
+  <main>
+   <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav> 
+   <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+  
+
+    <h1 style="align-content: center;">List of Users</h1>
+    <div style = "position:relative; left:1100px; top:2px;"> <button class="btn btn-primary" (click)="adduser()">Add</button></div>
+    <table class="table table-hover mt-3">
+        <thead>
+            <tr>
+                <th scope="col">userID</th>
+                <th scope="col">username</th>
+                <th scope="col">password</th>
+                <th scope="col">Email Id</th>
+                <th scope="col">phonenumber</th>
+                <th scope="col">jobID</th>
+                <th scope="col">jobRole</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+          <tbody>
+            <tr *ngFor="let user of Userlist">  
+                <td>{{user.userID}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phonenumber}}</td>
+                <td>{{user.jobID}}</td>
+                <td>{{user.jobRole}}</td>
+                <td>
+                    <i class="fa-regular fa-trash-can" (click)="deleted(user)"></i>  
+                    <i class="fa-regular fa-pen-to-square mx-3" (click)="populateContent(user)"></i>
+                </td>  
+            </tr>
+        </tbody> 
+    </table>  
+
+   
+         <!--MAIN CONTENT AREA-->
+        
+       </div>
+   </main>
+ </div>

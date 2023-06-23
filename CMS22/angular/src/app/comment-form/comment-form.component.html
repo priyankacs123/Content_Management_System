@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="comment-form">
+      <h2>user sharing portal</h2>
+    
+      <form (ngSubmit)="submitComment()">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" [(ngModel)]="comment.name" required>
+        </div>
+    
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" [(ngModel)]="comment.email" required>
+        </div>
+    
+        <div>
+          <label for="content">Comment:</label>
+          <textarea id="content" name="content" [(ngModel)]="comment.content" required></textarea>
+        </div>
+    
+        <div>
+          <label for="file">Upload File:</label>
+          <input type="file" id="file" name="file" (change)="handleFileInput($event)">
+        </div>
+    
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+        <button routerLink="/home">Go to Home</button>
+      </form>
+    </div>
+    
+    <div class="comments-section">
+      <h2>Comments</h2>
+    
+      <ul>
+        <li *ngFor="let comment of comments">
+          <h3>{{ comment.name }}</h3>
+          <p>{{ comment.content }}</p>
+          <button (click)="deleteComment(comment)">Delete</button>
+          <div *ngIf="comment.fileURL">
+            <a [href]="comment.fileURL" target="_blank">Download File</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

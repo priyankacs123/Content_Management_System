@@ -1,0 +1,26 @@
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row" style="border: 2px solid black;box-shadow: 20px 20px 50px 15px grey;padding-left: 300px;">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">{{ user[0].username }}</span><span class="text-black-50">{{ user[0].email }}</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile </h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">UserName</label><input type="text" class="form-control" placeholder="Username" value="{{user[0].username}}" [disabled]="isDisabled"></div>
+                    <div class="col-md-6"><label class="labels">Job Role</label><input type="text" class="form-control" value="{{user[0].jobRole}}" placeholder="" [disabled]="isDisabled"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value="{{user[0].phonenumber}}" [disabled]="isDisabled"></div>
+                    <div class="col-md-12"><label class="labels">Job Id</label><input type="number" class="form-control" placeholder="Job Id" value="{{user[0].jobID}}" [disabled]="isDisabled"></div>
+                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value="{{ user[0].email }}" [disabled]="isDisabled"></div>
+                    <!-- <div class="col-md-12"><label class="labels">Password</label><input type="text" class="form-control" placeholder="Password" value="{{ user[0].password }}" [disabled]="isDisabled"></div> -->
+                </div>
+                <div class="mt-2 text-center"><button class="btn btn-primary profile-button" type="button" (click)="back()">Back</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+

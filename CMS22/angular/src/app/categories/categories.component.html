@@ -1,0 +1,38 @@
+<div class="container-fluid g-0">
+  <app-header (sideNavToggled)="sideNavStatus=$event;"></app-header>
+  <main>
+   <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav> 
+   <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+   
+    <div class="card-container">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">search content by Department</h5>
+          <p class="card-text">view the contents of and records by the department </p>
+          <p  type="button" class="btn btn-primary" routerLink="/content-by-category">Go to Content by Category</p>
+        </div>
+      </div>    
+    <ng-container *ngFor="let category of catlist">
+      <!-- Content to be repeated -->
+    
+      <div class="card">
+         <div class="card-body">
+           <h5 class="card-title">{{category.categoryName}}</h5>
+           <!-- <p class="card-text">responsible for creating and maintaining innovative software solutions that drive our business growth and enhance customer experiences. </p> -->
+           <!-- <button type="button" class="btn btn-primary">View</button> -->
+           <p  type="button" class="btn btn-primary" (click)="cat(category)">View</p>
+
+         </div>
+       </div>
+      </ng-container>
+
+    </div> 
+  </div>
+</main>
+</div>  
+
+         
+       
+
+

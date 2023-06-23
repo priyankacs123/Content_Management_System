@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width ,initial-scale=1.0">
+        <title>CMS</title>
+        <style>
+            *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    /*background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWc1L0ExOrYZKetKrS-fQNCiKnqqn2zWah6A&usqp=CAU");
+    background-position: center;
+    background-size: cover*/
+}
+
+.hero{
+    width: 100%;
+    min-height: 100vvh;   
+    background-position: center;
+    background-size: cover;
+    padding: 10px 10%;
+    overflow: hidden;
+}
+nav{
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    width: 140px;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 15px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #333;
+    font-weight:400;
+}
+.login-btn{
+    text-decoration: none;
+    color: #333;
+    margin-right: 15px;
+    font-weight: 400;
+}
+
+.btn{
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 40px;
+    color: #fff;
+    background-image: linear-gradient(45deg,rgb(70, 198, 240),#060666);
+    font-size: 14px;
+    border-radius: 30px;
+    border-top-right-radius: 0;
+    transition: 0.5s;
+}
+.content{
+    margin-top: 10%;
+    max-width: 600px;
+}
+.content h1{
+    font-size: 45px;
+    color: #222;
+}
+.content p{
+    margin: 20px 0 50px;
+}
+.content .btn{
+    padding: 15px 80px;
+    font-size: 16px;
+}
+h2{
+    align-items: center;
+    text-align: center;
+}
+.btn:hover{
+border-top-right-radius: 0;
+transition: 0.5s;
+}
+.feature-img{
+    width: 55%;
+    position: absolute;
+    bottom: 0;
+    right: 0%;
+
+}
+
+form input,
+form textarea {
+    align-items: center;
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+form button {
+  display: block;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+footer{
+    text-align: center;
+}
+form button:hover {
+  background-color: #222;
+}
+
+.about{
+    color: #03034a;
+    font-weight: bold;
+}
+
+.about p{
+    text-align: center;
+    align-items: center;
+}
+.services-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        justify-items: center;
+        margin-bottom: 20px;
+    }
+
+    .services-card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        width: 250px;
+        text-align: center;
+        transition: transform 0.3s;
+    }
+    .services-card:hover {
+        transform: scale(1.1);
+        background-color: #94c5fd;
+    color: #fff;
+    border-color: #054385;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .services-card h3 {
+        font-size: 16px;
+        color: #333;
+        margin-top: 10px;
+    }
+.options li a {
+  color: #03034a !important;
+  font-weight: bold !important;
+}
+.para{
+    text-align: center;
+}
+      </style>
+    </head>
+    <body> 
+        <br>       
+        <div class="hero">
+            <nav>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtS0JdFapy8icYBSBMvXgJU9l7Le-HD5xuHg&usqp=CAU" class="logo">
+                <ul class="options">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div>
+                    <a routerLink="/signup" class="btn">Sign Up</a>&nbsp;&nbsp;
+                    <a routerLink="/login" class="btn">Log In</a>
+                </div>
+            </nav>
+        </div>
+        <div class="hero">
+            <section>
+                <div class="content">
+                    <h1>Manage Your Content Efficiently</h1><br>
+                    <p>Choose a best way to manage your documents securely!!!
+                       <br> Join our growing community of content creators and unlock the full potential of your online presence.
+                    </p>
+                    <a routerLink="/signup" class="btn">Sign Up</a>
+                </div>
+                <img src="https://png.pngtree.com/png-vector/20220527/ourmid/pngtree-student-man-with-laptop-studying-on-online-course-png-image_4753818.png" class="feature-img">
+            </section>
+        </div>
+        <br><br><br><br>
+        <br><br>
+        <div class="hero">
+        
+        <section id="about">
+            <div class="container">
+                <h2 class="about">About Us</h2><br>
+                <p class="para"> Welcome to our Content Management System (CMS) platform! We are dedicated to providing you with a powerful and user-friendly solution for managing and organizing your content effectively.
+
+                    At our CMS, we understand the importance of efficient content creation and editing. With our intuitive interface and robust features, you can easily create and update your content without any technical expertise. Whether you're a blogger, business owner, or content marketer, our CMS empowers you to take control of your online presence. Our dedicated team is here to assist you every step of the way, ensuring that you make the most out of our features and achieve your content management goals.</p>
+              </div>
+        </section>
+        </div>
+        <br>
+        <div class="hero">
+            <section id="services">
+                <h2 class="about">Services</h2>
+                <br>
+                <div class="services-cards">
+                    <div class="services-card">
+                      <h3>Easy content creation and editing</h3>
+                    </div>
+                    <div class="services-card">
+                        <h3>Flexible content organization</h3>
+                    </div>
+                    <div class="services-card">
+                        <h3>Responsive design for any device</h3>
+                    </div>
+                    <div class="services-card">
+                        <h3>User-friendly interface</h3>
+                    </div>
+                    <div class="services-card">
+                        <h3>Version control and content history</h3>
+                    </div>
+                    <div class="services-card">
+                        <h3>Secure user authentication and access control</h3>
+                    </div>
+                </div>
+              </section>
+        </div>
+        <br>
+        <div class="hero">
+            <section id="contact">
+                <h2 class="about">Contact</h2><br>
+                <div class="container">
+                    <div class="row justify-content-center">
+                      <div class="col-md-8 row justify-content-center">
+                        <form #from="ngForm" (ngSubmit)="addquery()">
+                          <input type="text" name="name" placeholder="Your Name" class="form-control" id="name" name="name" [(ngModel)] ="form.name" required>
+                          <input type="email" name="email" placeholder="Your Email"  class="form-control" id="email" name="email" [(ngModel)] ="form.email" required>
+                          <textarea name="message" placeholder="Your Message"  class="form-control" id="message" name="message" [(ngModel)] ="form.message" required></textarea>
+                          <button type="submit" class="btn">Send Message</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+              </section>            
+        </div>
+        <br>
+        <footer>
+            <p>&copy; 2023 CMS. All rights reserved.</p>
+          </footer>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+<div class="Contents-tile" *ngFor="let content of Contents">
+    <div class="tile">
+      <h3>Title: {{ content.title }}</h3>
+      <p>Description: {{ content.description }}</p>
+      <p>FileType: {{ content.fileType }}</p>
+      <p>Retention Period: {{ content.retentionPeriod }}</p>
+      <p>User ID: {{ content.userID }}</p>
+      <a [href]="content.fileURL" target="recyclebin">Download</a>
+      <button (click)="edit(content)">edit</button>
+    <div>
+      <button (click)="delete(content)">delete</button>
+      </div>
+    </div>
+  </div>
+  

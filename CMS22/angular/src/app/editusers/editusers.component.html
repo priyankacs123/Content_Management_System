@@ -1,0 +1,71 @@
+<div class="container-fluid g-0">
+  <app-header (sideNavToggled)="sideNavStatus=$event;"></app-header>
+  <main>
+   <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav> 
+   <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+
+
+
+  <form autocomplete="off" #myForm="ngForm" (ngSubmit)="myForm.form.valid && submit(myForm)" class="needs-validation" 
+style="padding-left: 300px;margin-top: 100px;padding-right: 400px;">
+  <!-- Existing form fields -->
+ <h1>EDIT THE USER</h1>
+  <div class="form-outline mb-4">
+    <label for="username" class="form-label">Username</label>
+    <div *ngIf="username.invalid && (username.touched || username.dirty)" class="invalid-feedback">
+      Username is required
+    </div>
+    <input type="text" name="username" class="form-control" placeholder="Enter Username" #username="ngModel"
+      [(ngModel)]="user.username" required>
+  </div>
+
+  <div class="form-outline mb-4">
+    <label for="email" class="form-label">Email</label>
+    <div *ngIf="email.invalid && (email.touched || email.dirty)" class="invalid-feedback">
+      Email is required
+    </div>
+    <input type="email" name="email" class="form-control" placeholder="Enter Email" #email="ngModel"
+      [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+  </div>
+
+  <div class="form-outline mb-4">
+    <label for="phonenumber" class="form-label">Phone Number</label>
+    <div *ngIf="phonenumber.invalid && (phonenumber.touched || phonenumber.dirty)" class="invalid-feedback">
+      Phone number is required
+    </div>
+    <input type="text" name="phonenumber" class="form-control" placeholder="Enter Phone Number" #phonenumber="ngModel"
+      [(ngModel)]="user.phonenumber" required pattern="[0-9]{10}">
+  </div>
+
+  <div class="form-outline mb-4">
+    <label for="JobID" class="form-label">Job Role</label>
+    <div *ngIf="JobID.invalid && JobID.touched && user.JobID === 0" class="invalid-feedback">
+      Required
+    </div>
+    <select name="JobID" class="form-select" #JobID="ngModel" [(ngModel)]="user.jobID" required>
+      <option value="0">Please Select</option>
+      <option value="1">Manager</option>
+      <option value="2">HR</option>
+      <!-- <option value="3">Admin</option> -->
+      <option value="4">Developer</option>
+      <option value="5">Salesperson</option>
+      <option value="6">Marketing Specialist</option>
+      <option value="7">Accountant</option>
+      <option value="8">Customer Service Representative</option>
+      <option value="9">Operations Manager</option>
+      <option value="10">Quality Assurance Analyst</option>
+    </select>
+  </div>
+
+  <div class="d-grid">
+    <button type="submit" [disabled]="myForm.invalid"
+      class="btn btn-primary btn-lg">Update</button>
+  </div>
+</form>
+
+
+
+
+</div>
+</main>
+</div>    

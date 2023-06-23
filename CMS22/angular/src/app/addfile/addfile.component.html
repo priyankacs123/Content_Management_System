@@ -1,0 +1,284 @@
+<style>
+
+  .hidden {
+
+    display: none;
+
+  }
+
+  </style>
+
+
+
+
+<div class="container-fluid g-0">
+
+    <app-userheader (sideNavToggled)="sideNavStatus=$event;"></app-userheader>
+
+    <main>
+
+     <app-usersidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-usersidenav>
+
+     <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+
+
+
+
+
+<section>
+
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+
+    <div class="container h-100">
+
+      <div class="row d-flex justify-content-center align-items-center h-100">
+
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+
+          <div class="card" style="border-radius: 15px;">
+
+            <div class="card-body p-5">
+
+              <h2 class="text-uppercase text-center mb-5">Add Content</h2>
+
+
+
+
+              <form autocomplete="off" #myForm="ngForm" (ngSubmit)="myForm.form.valid && submit(myForm)">
+
+               
+
+                <div class="form-outline mb-4">
+
+                  <label for="title" class="float-left">Title</label>
+
+                  <div *ngIf="title.invalid && (title.touched || title.dirty)" class="float-right">
+
+                    <p class="text-danger">Title is required</p>
+
+                  </div>
+
+                  <input type="text" name="title" class="form-control" placeholder="Enter Title"
+
+                    #title="ngModel" [(ngModel)]="contentData.title" required>
+
+                </div>
+
+
+
+
+                <div class="form-outline mb-4">
+
+                  <label for="description" class="float-left">Description</label>
+
+                  <div *ngIf="description.invalid && (description.touched || description.dirty)" class="float-right">
+
+                    <p class="text-danger">Description is required</p>
+
+                  </div>
+
+                  <textarea name="description" class="form-control" placeholder="Enter Description"
+
+                    #description="ngModel" [(ngModel)]="contentData.description" required></textarea>
+
+                </div>
+
+
+
+
+                <div class="form-outline mb-4">
+
+                  <label for="categoryID" class="float-left">Category ID</label>
+
+                  <div *ngIf="categoryID.invalid && (categoryID.touched || categoryID.dirty)" class="float-right">
+
+                    <p class="text-danger">Category ID is required</p>
+
+                  </div>
+
+                  <select name="categoryID" class="form-control" #categoryID="ngModel" [(ngModel)]="contentData.categoryID" required>
+
+                    <option value="0">Please Select</option>
+
+                    <option value="1" [selected]="contentData.categoryID === 1">Development Department</option>
+
+                    <option value="2" [selected]="contentData.categoryID === 2">Infrastructure Department</option>
+
+                    <option value="3" [selected]="contentData.categoryID === 3">Support Department</option>
+
+                    <option value="4" [selected]="contentData.categoryID === 4">Project Management Office (PMO)</option>
+
+                    <option value="5" [selected]="contentData.categoryID === 5">Quality Assurance (QA) Department</option>
+
+                    <option value="6" [selected]="contentData.categoryID === 6">Security Department</option>
+
+                    <option value="7" [selected]="contentData.categoryID === 7">Sales and Marketing Department</option>
+
+                    <option value="8" [selected]="contentData.categoryID === 8">Research and Development (R&D) Department</option>
+
+                    <option value="9" [selected]="contentData.categoryID === 9">Training and Education Department</option>
+
+                    <option value="10" [selected]="contentData.categoryID === 10">Human Resources (HR) Department</option>
+
+                  </select>
+
+                </div>
+
+
+
+
+                <!-- <div class="form-outline mb-4">
+
+                  <label for="fileType" class="float-left">File Type</label>
+
+                  <div *ngIf="fileType.invalid && (fileType.touched || fileType.dirty)" class="float-right">
+
+                    <p class="text-danger">File Type is required</p>
+
+                  </div>
+
+                  <input type="text" name="fileType" class="form-control" placeholder="Enter File Type"
+
+                    #fileType="ngModel" [(ngModel)]="contentData.fileType" required>
+
+                </div> -->
+
+     
+
+                <!-- <div class="form-outline mb-4">
+
+                  <label for="userID" class="float-left">emp ID</label>
+
+                  <div *ngIf="userID.invalid && (userID.touched || userID.dirty)" class="float-right">
+
+                    <p class="text-danger">emp ID is required</p>
+
+                  </div>
+
+                  <input type="number" name="userID" class="form-control" placeholder="Enter User ID"
+
+                    #userID="ngModel" [(ngModel)]="contentData.userID" min="1" max="999" >
+
+                </div> -->
+
+                 
+
+               
+
+               
+
+<!--
+
+                <div class="form-outline mb-4">
+
+                  <label for="userID" class="float-left">User ID</label>
+
+
+
+
+                   
+
+                  <input type="number" name="userID" class="form-control" placeholder="Enter User ID"
+
+                     required>
+
+                </div> -->
+
+                <div id="userID" [hidden]="hideUserID">{{ user[0].userID }}</div>
+
+
+
+
+               
+
+                <div class="form-outline mb-4">
+
+                  <label for="fileURL" class="float-left">File URL</label>
+
+                  <div *ngIf="fileURL.invalid && (fileURL.touched || fileURL.dirty)" class="float-right">
+
+                    <p class="text-danger">File URL is required</p>
+
+                  </div>
+
+                  <input type="text" name="fileURL" class="form-control" placeholder="Enter File URL"
+
+                    #fileURL="ngModel" [(ngModel)]="contentData.fileURL"  required>
+
+                </div>
+
+
+
+
+                <div class="form-outline mb-4">
+
+                  <label for="retentionPeriod" class="float-left">Retention Period</label>
+
+                  <div *ngIf="retentionPeriod.invalid && (retentionPeriod.touched || retentionPeriod.dirty)" class="float-right">
+
+                    <p class="text-danger">Retention Period is required</p>
+
+                  </div>
+
+                  <input type="date" name="retentionPeriod" class="form-control" placeholder="Enter Retention Period"
+
+                    #retentionPeriod="ngModel" [(ngModel)]="contentData.retentionPeriod" required>
+
+                </div>
+
+               
+
+
+
+
+                <div class="d-flex justify-content-center">
+
+                  <button type="submit" [disabled]="myForm.invalid"
+
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"> {{ editMode ? 'Update' : 'Submit' }}</button>
+
+                </div>
+
+                <br>
+
+                <div class="d-flex justify-content-center">
+
+                  <button type="reset" class="btn btn-danger btn-block btn-lg gradient-custom-4 text-body">Cancel</button>
+
+                </div>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+<footer class="footer">
+
+    <div class="container">
+
+      <span class="text-muted">© 2023 Content Management System. All rights reserved.</span>
+
+    </div>
+
+  </footer>
+
+</div>
+
+</main>
+
+</div>

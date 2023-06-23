@@ -1,0 +1,27 @@
+<div class="container my-5">
+    <h1 class="mb-3">User Queries</h1>
+
+    <table class="table" *ngIf="formresponses && formresponses.length > 0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let formresponse of formresponses">
+                <td>{{formresponse.id}}</td>
+                <td>{{formresponse.name}}</td>
+                <td>{{formresponse.email}}</td>
+                <td>{{formresponse.message}}</td>
+                <td><button type="button" class="btn btn-danger" (click)="Deletequery(formresponse.id)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="!formresponses || formresponses.length <= 0">No Queries found</p>
+</div>
+
+
